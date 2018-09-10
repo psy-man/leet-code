@@ -23,3 +23,32 @@
 // };
 //
 // console.log(rotatedDigits(10));
+
+
+const judgeSquareSum = (c) => {
+  let start = 0;
+  let end = ~~Math.sqrt(c);
+
+  while (start <= end) {
+    const sum = start * start + end * end;
+
+    if (sum === c) {
+      return true;
+    } else if (sum > c) {
+      end -= 1;
+    } else {
+      start += 1;
+    }
+  }
+
+  return false;
+};
+
+
+console.log(judgeSquareSum(3));
+console.log(judgeSquareSum(5));
+console.log(judgeSquareSum(44));
+console.log(judgeSquareSum(36));
+
+console.log(judgeSquareSum(4));
+console.log(judgeSquareSum(9999999999));
