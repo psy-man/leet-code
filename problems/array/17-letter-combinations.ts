@@ -14,14 +14,14 @@ const letterCombinations = (digits) => {
 
   const result = [];
 
-  const rec = (nums, buffer = []) => {
+  const rec = (nums, buffer = '') => {
     const cur = phone.get(nums[0]);
 
     for (const d of cur) {
       if (nums.length > 1) {
-        rec(nums.substring(1), [...buffer, d]);
+        rec(nums.substring(1), buffer + d);
       } else {
-        result.push([...buffer, d].join(''));
+        result.push(buffer + d);
       }
     }
 
