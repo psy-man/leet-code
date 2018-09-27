@@ -6,10 +6,6 @@ const decodeString = (s) => {
   let result = '';
   let number = '';
 
-  if (!s.includes('[')) {
-    return s;
-  }
-
   for (let i = 0; i < s.length; i += 1) {
     if (/[0-9]/.test(s[i])) {
       number = '';
@@ -32,7 +28,7 @@ const decodeString = (s) => {
         j += 1;
       }
 
-      result += s.slice(i + 1, j - 1).repeat(+number);
+      result += decodeString(s.slice(i + 1, j - 1)).repeat(+number);
 
       i = j - 1;
       continue;
@@ -41,7 +37,7 @@ const decodeString = (s) => {
     result += s[i];
   }
 
-  return decodeString(result);
+  return result;
 };
 
 
