@@ -1,6 +1,26 @@
 import { TestHelper } from '../../utils/test-case';
 
 
+const mooreVoting = (nums) => {
+  let count = 1;
+  let ret = nums[0];
+
+  for (let i = 1; i < nums.length; i += 1) {
+    if (count === 0) {
+      ret = nums[i];
+    }
+
+    if (nums[i] !== ret) {
+      count -= 1;
+    } else {
+      count += 1;
+    }
+  }
+
+  return ret;
+};
+
+
 const majorityElement = (nums) => {
   const seen = new Map();
 
@@ -25,5 +45,5 @@ describe('majorityElement', () => {
   test.expect([3,2,3]).toEqual(3);
   test.expect([1]).toEqual(1);
 
-  test.execute(majorityElement);
+  test.execute(majorityElement, mooreVoting);
 });
